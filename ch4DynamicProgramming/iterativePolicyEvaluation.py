@@ -11,13 +11,8 @@ print('observation_space:', env.observation_space)
 STATES = range(env.observation_space.n)
 ACTIONS = range(env.action_space.n)
 
-
-policy = np.random.randint(low=0, high=4, size=env.observation_space.n)
-print(f'policy:{policy}')
-
-
 policy = np.random.rand(len(ACTIONS), len(STATES))
-policy /= policy.sum(axis=1, keepdims=True)
+policy /= policy.sum(axis=0, keepdims=True)
 print("Policy Matrix (Probability Distribution):\n",policy)
 
 # initialize value table with zeros
